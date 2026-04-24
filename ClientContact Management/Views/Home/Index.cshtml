@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container text-center mt-5">
+    <h1>Welcome to Client Contact Management App</h1>
+    <p class="lead">Manage Clients and Contacts easily</p>
+
+    <!-- Buttons -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4">
+            <a asp-controller="Client" asp-action="Index" class="btn btn-primary btn-lg w-100 mb-3">
+                Manage Clients
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a asp-controller="Contact" asp-action="Index" class="btn btn-success btn-lg w-100 mb-3">
+                Manage Contacts
+            </a>
+        </div>
+    </div>
+
+
+   @*  <!-- Dashboard Tables -->
+    <div class="row mt-5">
+
+        <!-- Recent Clients -->
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Recent Clients</h5>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Client Code</th>
+                                <th>Name</th>
+                                <th># Contacts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var c in ViewBag.RecentClients)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-controller="Client" asp-action="Edit" asp-route-id="@c.Id">
+                                            @c.ClientCode
+                                        </a>
+                                    </td>
+                                    <td>@c.Name</td>
+                                    <td class="text-center">@c.ContactsCount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Contacts -->
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Recent Contacts</h5>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th># Clients</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var c in ViewBag.RecentContacts)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-controller="Contact" asp-action="Edit" asp-route-id="@c.Id">
+                                            @c.FullName
+                                        </a>
+                                    </td>
+                                    <td>@c.Email</td>
+                                    <td class="text-center">@c.ClientsCount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> *@
+
+    </div>
+</div>
